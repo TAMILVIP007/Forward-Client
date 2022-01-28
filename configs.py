@@ -4,7 +4,9 @@ import os
 import heroku3
 
 
-class Config(object):
+
+
+class Config((object)):
     # Get This From @TeleORG_Bot
     API_ID = int(os.environ.get("API_ID"))
     API_HASH = os.environ.get("API_HASH")
@@ -16,7 +18,10 @@ class Config(object):
     FORWARD_TO_CHAT_ID = os.environ.get("FORWARD_TO_CHAT_ID", None)
     # Filters for Forwards
     DEFAULT_FILTERS = "video document photo audio text gif forwarded poll sticker"
-    FORWARD_FILTERS = list(set(x for x in os.environ.get("FORWARD_FILTERS", DEFAULT_FILTERS).split()))
+    FORWARD_FILTERS = list(
+        set(os.environ.get("FORWARD_FILTERS", DEFAULT_FILTERS).split())
+    )
+
     # Forward as Copy. Value Should be True or False
     FORWARD_AS_COPY = bool(os.environ.get("FORWARD_AS_COPY", True))
     # Sleep Time while Kang
